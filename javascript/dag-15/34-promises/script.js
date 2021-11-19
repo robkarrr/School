@@ -4,17 +4,18 @@ PROMISES 101
 
 */
 
-const teacherIsNice = true;
+const teacherIsNice = false;
 
 const willWeGetTheAnswersToTheExam  = () => {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
 			if(teacherIsNice){
-				resolve();
+				const answer = [3,1,4,2];
+				resolve(answer);
 			}
 
 			else{
-				reject();
+				reject("AINT NO BODY GOT TIME FOR THAT");
 			}
 		}, 3000);
 
@@ -23,9 +24,11 @@ const willWeGetTheAnswersToTheExam  = () => {
 }
 
 willWeGetTheAnswersToTheExam()
-.then(() => {
+.then((data) => {
 	alert("Promise fulfilled");
+	console.log("Here's the answers", data)
 })
-.catch(() => {
-	alert("Promise UNfulfilled");
+.catch((err) => {
+	alert("Promise Unfulfilled");
+	console.log("Reason:" ,err);
 });
